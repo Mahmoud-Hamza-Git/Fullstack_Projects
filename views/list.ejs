@@ -1,0 +1,50 @@
+<%- include("header.ejs"); -%>
+    <div class="box" id="heading">
+        <h1><%= listTitle %></h1>
+    </div>
+
+    <!--Main Content-->
+    <div class="box">
+        <% listItems.forEach(element=>{  %>
+            <form action="/deleteItem" method="post">
+                <div class="item">
+                    <input type="checkbox" name="checkedbox" value="<%= element.id %>" onchange="this.form.submit()"> <!--submitting the form using checkbox-->
+                    <p> <%= element.name %> </p>
+                </div>
+                <input type="hidden" name="listTitle" value="<%= listTitle %>"><!--if i put this input in the forEach the value will be updated many times so will not have single value any more(or i can put the form inside the loop to create multiple forms)-->
+            </form>
+        <% }) %>
+
+        <form class="item" action="/" method="post">
+            <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+            <input type="hidden" name="listTitle" value="<%= listTitle %>"> <!--this hidden input is used to pass as many values as you want when the form is submitted-->
+            <button type="submit" class="addButton">+</button>
+        </form>
+
+    </div>
+
+
+    <!--Side Bar-->
+    <div class="side-bar">
+        <a href="/"><h1 id="side-barTitle">My Lists</h1></a>
+        <% listsNames.forEach(element=>{ %>
+            <form action="/sideBar" method="post" class="flex" >
+                <a href="/<%= element.name %>"><h2 class="listName"> <%= element.name %> </h2></a>
+
+                <input type="hidden" name="listId" value="<%= element._id %>">
+
+                <button type="submit" class="deleteButton">-</button>
+            </form>
+            <hr>
+        <% }) %>
+
+        <form action="/addNew" class="item addList" method="post"> <!--method-->
+            <input type="text" name="newList" placeholder="New List" autocomplete="off">
+            <button type="submit" class="addButton">+</button>
+        </form>
+    
+    </div>
+<%- include("footer.ejs"); -%>
+
+
+<!-- <input type="hidden" name="check" value="delete"> -->
