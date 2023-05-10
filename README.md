@@ -1,2 +1,2 @@
 # Booking App Project
-Clone Project:   `git clone --single-branch Booking_App -b <repository URL> .`
+Clone Project:   `git clone --single-branch -b Booking_App <repository URL>`
