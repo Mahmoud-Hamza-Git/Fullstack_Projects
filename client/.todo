@@ -1,0 +1,17 @@
+Notes:
+  ☐ In styling we make container around the container to be --> one container for the background and one container for the content -- so we can style them sepaprately
+  ☐ :root selector  -- place-items & place-content properties
+  ☐ [name]  --> to put a variable as a property name or a value inside an object you have to use []square brackets
+  ☐ instead of using multiple useStates --> use single object contains the states and pass options to the handler function that changes the states to define which state needs to changes
+  ☐ but how to pass arguments to the handler function without running it --> becuase if you tried hadlerFunc('name',20) this will run it and cause infinite loop if it changes a state --> so we have to pass arrow func as a handler func and inside it you can call the true handler you want and pass the values
+  ☐ disabled attribute in button element --> shorthand used for disable the button clicks under certain conditions
+  ☐ overflow: hidden; --> set to a container to hide overflow of elments inside a container
+  ☐ to make an overflowed image shrink and takes the targeted width --> use widht:100%;
+  ☐ to devide tracks into relative sizes like grid but using flex box --> go to each element and use flex:1 or flex:3
+  ☐  const navigate = useNavigate();
+      navigate('/hotel', {state:{destination, date, options}})  --> we can pass state to the navigation
+      then const  location = useLocation() accepts that path and the state object
+  ☐ {type} instead of using passing props then take type from it --> props.type
+  ☐ remember to take input form input element use onChange event 
+
+
