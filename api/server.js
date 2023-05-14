@@ -1,12 +1,39 @@
 import express from 'express';
-import mongoose from 'mongoose';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 import colors from 'colors';
+import connect from './db/connect.js';
+import authRoute from './routes/auth.js';
+import usersRoute from './routes/users.js';
+import hotelsRoute from './routes/hotels.js';
+import roomsRoute from './routes/rooms.js';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
-config();
-
+dotenv.config();
 const app = express();
 
-app.listen(2000, (err) => {
+// Middlewares
+app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
+
+app.use('/api/auth', authRoute);
+app.use('/api/users', usersRoute);
+app.use('/api/hotels', hotelsRoute);
+app.use('/api/rooms', roomsRoute);
+
+app.use((err, req, res, next) => {
+  const errorStatus = err.status || 500;
+  const errorMessage = err.message || 'Something went wrong!';
+  return res.status(errorStatus).json({
+    success: false,
+    status: errorStatus,
+    message: errorMessage,
+    stack: err.stack,
+  });
+});
+
+app.listen(3000, (err) => {
+  connect();
   console.log('server is listening on port 3000...'.blue);
 });

@@ -1,2 +1,9 @@
 notes:
   ☐ type:module --> enables me to use import instead of require
+  ☐ if you are using import, you need to add the extention .js for local import files
+  ☐ dont't forget the starting slash / in the middleware end point
+  ☐ middleware
+
+TODO:
+  ☐ return error 404 for any request to endpoints does't exists.
+  
