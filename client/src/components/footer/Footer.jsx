@@ -44,7 +44,7 @@ const Footer = () => {
           <li className={classes.fListItem}>Terms & conditions</li>
         </ul>
       </div>
-      <div className={classes.fText}>Copyright © 2023 Lamabooking.</div>
+      <div className={classes.fText}>Copyright © 2023 booking.</div>
     </div>
   );
 };

@@ -1,9 +1,23 @@
-notes:
+NOTES:
   ☐ type:module --> enables me to use import instead of require
   ☐ if you are using import, you need to add the extention .js for local import files
   ☐ dont't forget the starting slash / in the middleware end point
   ☐ middleware
+  ☐ we can use try-catch block and throw(Custom_err) to throw custom error and define a custom error handling in the catch block, but this leads to write the same error handling in each try-catch block in the project. -- so
+  we also can use middleware to be the error handler for all custom errors & throw the error to the middleware using next(Custom_err), so now we write the error handler only once.
+  we can also create the custom error using utility function we only pass the error message and the HTTP response status and it will create it and pass it to next middleware which will handle it and send it to the user. 
+  ☐ we can navigate between react pages using one of 2 methods 1- using Link elmement from react-router-dom which only move to the targeted route 
+    2- using useNavigate which go to routes and can transport data or state variables with it, to receive data we use useLocation which contains the url and the object passed
+    
 
 TODO:
   ☐ return error 404 for any request to endpoints does't exists.
-  
+  ☐ proxy didn't work
+  ☐ change AUTH_START AND it's family in auth context
+
+
+PROBLEM:
+  ☐ proxy doesn't work
+
+SOLVED:
+  ☐ is empty array[] truthy and falsy value, this cause a problem cause i thought it was falsy but to treat it as falsy use array.length

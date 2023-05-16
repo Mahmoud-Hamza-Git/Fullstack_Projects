@@ -15,3 +15,7 @@ Notes:
   ☐ remember to take input form input element use onChange event 
 
 
+NOTES:
+  ☐ inline style in react have to be object --> style={{color:"grean"}}
+
+

@@ -1,0 +1,44 @@
+.register {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #003580;
+}
+
+.rContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(195, 210, 255);
+  padding: 50px;
+  padding-top: 10px;
+  border-radius: 10px;
+}
+
+.logo {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.rInput {
+  height: 30px;
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.rButton {
+  border: none;
+  padding: 10px 20px;
+  background-color: #0071c2;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.rButton:disabled {
+  background-color: #0071c28c;
+  cursor: not-allowed;
+}
