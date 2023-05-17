@@ -27,6 +27,7 @@ export const deleteHotel = async (req, res, next) => {
     next(err);
   }
 };
+
 export const getHotel = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
@@ -35,6 +36,7 @@ export const getHotel = async (req, res, next) => {
     next(err);
   }
 };
+
 export const getHotels = async (req, res, next) => {
   const { min, max, limit, ...others } = req.query;
   try {
@@ -47,6 +49,7 @@ export const getHotels = async (req, res, next) => {
     next(err);
   }
 };
+
 export const countByCity = async (req, res, next) => {
   const cities = req.query.cities.split(',');
   try {

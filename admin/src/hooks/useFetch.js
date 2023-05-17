@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const useFetch = (url) => {
   const [data, setData] = useState([]);
@@ -12,21 +12,23 @@ const useFetch = (url) => {
       try {
         const res = await axios.get(url);
         setData(res.data);
-      } catch (err) {
-        setError(err);
+      } catch (error) {
+        setError(error);
       }
-      setLoading(false);
+      setLoading(false); // now i think even we changed a state of loading before and the component is re-evaluated but the following code is also executed not ignored
     };
+
     fetchData();
   }, [url]);
 
+  // refetch our data
   const reFetch = async () => {
     setLoading(true);
     try {
       const res = await axios.get(url);
       setData(res.data);
-    } catch (err) {
-      setError(err);
+    } catch (error) {
+      setError(error);
     }
     setLoading(false);
   };
