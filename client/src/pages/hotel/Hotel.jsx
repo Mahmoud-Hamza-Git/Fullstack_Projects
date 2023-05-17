@@ -25,7 +25,7 @@ const Hotel = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const id = location.pathname.split('/')[2];
-  const { data, loading, error, reFetch } = useFetch(`http://localhost:3000/api/hotels/find/${id}`);
+  const { data, loading, error, reFetch } = useFetch(`http://localhost:5000/api/hotels/find/${id}`);
   const { dates, options } = useContext(SearchContext);
   const { user, dispatch } = useContext(AuthContext);
   const days = differenceInDays(dates[0]?.endDate, dates[0]?.startDate) || 1;
@@ -96,14 +96,6 @@ const Hotel = () => {
                     Book a stay over ${data.cheapestPrice} at this property and get a free airport taxi
                   </span>
                   <div className='hotelImages'>
-                    <div className='hotelImgWrapper' key={0}>
-                      <img
-                        onClick={() => handleOpen(0)}
-                        src='https://cf.bstatic.com/xdata/images/hotel/max1280x900/261707389.jpg?k=52156673f9eb6d5d99d3eed9386491a0465ce6f3b995f005ac71abc192dd5827&o=&hp=1'
-                        alt=''
-                        className='hotelImg'
-                      />
-                    </div>
                     {data.photos?.map((photo, i) => (
                       <div className='hotelImgWrapper' key={i}>
                         <img onClick={() => handleOpen(i)} src={photo} alt='' className='hotelImg' />

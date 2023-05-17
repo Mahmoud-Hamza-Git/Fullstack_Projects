@@ -27,7 +27,7 @@ const Login = () => {
     e.preventDefault();
     dispatch({ type: 'AUTH_START' });
     try {
-      const res = await axios.post('http://localhost:3000/api/auth/register', credentials);
+      const res = await axios.post('http://localhost:5000/api/auth/register', credentials);
       dispatch({ type: 'AUTH_SUCCESS', payload: res.data.details });
       navigate('/');
     } catch (err) {

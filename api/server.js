@@ -33,7 +33,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-app.listen(3000, (err) => {
+app.listen(5000, (err) => {
   connect();
-  console.log('server is listening on port 3000...'.blue);
+  console.log('server is listening on port 5000...'.blue);
 });
