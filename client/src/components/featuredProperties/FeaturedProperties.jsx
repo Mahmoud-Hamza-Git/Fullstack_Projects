@@ -2,7 +2,7 @@ import useFetch from '../../hooks/useFetch';
 import classes from './featuredProperties.module.css';
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch('http://localhost:5000/api/hotels/?limit=2');
+  const { data, loading, error } = useFetch('http://localhost:5000/api/hotels/?limit=2&&sort=name');
   return (
     <div className={classes.fp}>
       {loading ? (

@@ -19,7 +19,7 @@ const useFetch = (url) => {
     };
 
     fetchData();
-  }, [url]);
+  }, []);
 
   // refetch our data
   const reFetch = async () => {

@@ -9,16 +9,17 @@
 .lContainer {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
   background-color: rgb(195, 210, 255);
   padding: 50px;
-  padding-top: 10px;
+  padding-top: 20px;
   border-radius: 10px;
 }
 
 .logo {
-  margin-bottom: 50px;
   text-align: center;
+  margin: auto;
 }
 
 .lInput {

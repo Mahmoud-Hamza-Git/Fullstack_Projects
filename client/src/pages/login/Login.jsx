@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import './login.css';
+import C from './login.module.css';
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -12,7 +12,6 @@ const Login = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log('😀😀😀');
     if (user) {
       navigate('/');
     }
@@ -38,26 +37,26 @@ const Login = () => {
   return (
     <>
       {!user && (
-        <div className='login'>
-          <div className='lContainer'>
-            <Link to={'/'} style={{ textDecoration: 'none', color: '#000' }}>
-              <h2 className='logo'>Booking</h2>
+        <div className={C.login}>
+          <div className={C.lContainer}>
+            <Link to={'/'} style={{ textDecoration: 'none', color: '#000', margin: '10px 0 10px' }}>
+              <h2 className={C.logo}>Booking</h2>
             </Link>
             <input
               type='text'
               placeholder='username'
               id='username'
               onChange={handleChange}
-              className='lInput'
+              className={C.lInput}
             />
             <input
               type='password'
               placeholder='password'
               id='password'
               onChange={handleChange}
-              className='lInput'
+              className={C.lInput}
             />
-            <button disabled={loading} onClick={handleClick} className='lButton'>
+            <button disabled={loading} onClick={handleClick} className={C.lButton}>
               Login
             </button>
             {error && <span>{error.message}</span>}

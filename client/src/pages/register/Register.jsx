@@ -40,7 +40,7 @@ const Login = () => {
       {!user && (
         <div className='register'>
           <div className='rContainer'>
-            <Link to={'/'} style={{ textDecoration: 'none', color: '#000' }}>
+            <Link to={'/'} style={{ textDecoration: 'none', color: '#000', margin: '10px 0 10px' }}>
               <h2 className='logo'>Booking</h2>
             </Link>
             <input

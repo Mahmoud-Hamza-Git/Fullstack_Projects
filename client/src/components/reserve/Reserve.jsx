@@ -29,7 +29,8 @@ const Reserve = ({ setOpen, hotelId }) => {
     return dates;
   };
 
-  const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
+  const alldates = getDatesInRange(dates[0]?.startDate, dates[0]?.endDate);
+  console.log(alldates, '😀😀');
 
   const isAvailable = (roomNumber) => {
     const isFound = roomNumber.unavailableDates.some((date) => alldates.includes(new Date(date).getTime()));
@@ -75,14 +76,15 @@ const Reserve = ({ setOpen, hotelId }) => {
               <div className='rPrice'>{item.price}</div>
             </div>
             <div className='rSelectRooms'>
-              {item.roomNumbers.map((roomNumber) => (
-                <div className='room'>
+              {item.roomNumbers.map((roomNumber, i) => (
+                <div className='room' key={i}>
                   <label>{roomNumber.number}</label>
                   <input
                     type='checkbox'
                     value={roomNumber._id}
                     onChange={handleSelect}
                     disabled={!isAvailable(roomNumber)}
+                    {...(isAvailable(roomNumber) && 'checked')}
                   />
                 </div>
               ))}

@@ -2,11 +2,12 @@ import './list.css';
 import Navbar from '../../components/navbar/Navbar';
 import Header from '../../components/header/Header';
 import { useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../../components/searchItem/searchItem';
 import useFetch from '../../hooks/useFetch';
+import { SearchContext } from '../../context/SearchContext';
 
 const list = () => {
   const location = useLocation();
@@ -17,9 +18,22 @@ const list = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
+  const { dispatch } = useContext(SearchContext);
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:5000/api/hotels?city=${destination}&min=${min || 1}&max=${max || 999}`
   );
+
+  //////////////////////////   HANDLER FUNCTIONS   ////////////////////////////////////////////
+  const handleOptions = (e, optionName) => {
+    setOptions((prev) => {
+      return { ...prev, [prev[optionName]]: e.target.value };
+    });
+  };
+
+  const handleSearch = () => {
+    reFetch();
+    dispatch({ type: 'NEW_SEARCH', payload: { destination, dates, options } });
+  };
 
   return (
     <div>
@@ -31,7 +45,7 @@ const list = () => {
             <h1 className='lsTitle'>Search</h1>
             <div className='lsItem'>
               <label>Destination</label>
-              <input placeholder={destination} type='text' />
+              <input placeholder={destination} type='text' onChange={(e) => setDestination(e.target.value)} />
             </div>
             <div className='lsItem'>
               <label>Check-in Date</label>
@@ -64,19 +78,37 @@ const list = () => {
                 </div>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Adult</span>
-                  <input type='number' min={1} className='lsOptionInput' placeholder={options.adult} />
+                  <input
+                    type='number'
+                    min={1}
+                    className='lsOptionInput'
+                    placeholder={options.adult}
+                    onChange={(e) => handleOptions(e, 'adult')}
+                  />
                 </div>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Children</span>
-                  <input type='number' min={0} className='lsOptionInput' placeholder={options.children} />
+                  <input
+                    type='number'
+                    min={0}
+                    className='lsOptionInput'
+                    placeholder={options.children}
+                    onChange={(e) => handleOptions(e, 'children')}
+                  />
                 </div>
                 <div className='lsOptionItem'>
                   <span className='lsOptionText'>Room</span>
-                  <input type='number' min={1} className='lsOptionInput' placeholder={options.room} />
+                  <input
+                    type='number'
+                    min={1}
+                    className='lsOptionInput'
+                    placeholder={options.room}
+                    onChange={(e) => handleOptions(e, 'room')}
+                  />
                 </div>
               </div>
             </div>
-            <button onClick={() => reFetch()}>Search</button>
+            <button onClick={handleSearch}>Search</button>
           </div>
           <div className='listResults'>
             {loading ? (
